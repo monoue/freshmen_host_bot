@@ -11,8 +11,8 @@ OK_SIGN = ':thumbsup:'
 
 def is_exception(USERS_NUM):
     EXCEPTIONS = [1, 2, 5]
-    for exception in EXCEPTIONS:
-        if USERS_NUM == exception:
+    for exc in EXCEPTIONS:
+        if USERS_NUM == exc:
             return True
     return False
 
