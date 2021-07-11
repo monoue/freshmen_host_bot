@@ -55,9 +55,7 @@ async def on_ready():
     print("on_ready")
 
 
-@bot.command()
-async def chnick(ctx):
-    await ctx.guild.me.edit(nick="おもてなし")
+bot.load_extension("cogs.change_bot_nickname")
 
 
 @bot.command()
