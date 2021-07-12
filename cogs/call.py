@@ -56,9 +56,8 @@ class Call(commands.Cog):
     async def call_manually(self, ctx):
         now = datetime.now()
         await self.bot.wait_until_ready()
-        channel = self.get_channel()
         self.embed.description = self.make_text(now)
-        msg = await channel.send(embed=self.embed)
+        msg = await ctx.send(embed=self.embed)
         await msg.add_reaction('\N{THUMBS UP SIGN}')
 
 
