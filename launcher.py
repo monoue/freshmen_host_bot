@@ -2,6 +2,7 @@ import random
 from discord.ext import commands
 import discord
 import config
+# import my_config
 import emoji
 
 
