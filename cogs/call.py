@@ -24,7 +24,9 @@ class Call(commands.Cog):
         day = now.day
         WEEKDAYS = ['月', '火', '水', '木', '金', '土', '日']
         weekday = WEEKDAYS[now.weekday()]
-        return f"{month}/{day}({weekday})開催分です。"\
+        hour = '16' if now.weekday() < 3 else '20'
+
+        return f"{month}/{day}({weekday}) {hour}:00-{hour}:30 開催分です。"\
             "スタンプはお早めに！\n\n"\
             "**新入生コアタイムだよ！ 全員集合！**"
 
