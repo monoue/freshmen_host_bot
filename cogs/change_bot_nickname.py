@@ -7,7 +7,8 @@ class ChNick(commands.Cog):
 
     @commands.command()
     async def chnick(self, ctx):
-        await ctx.guild.me.edit(nick="おもてなし")
+        # await ctx.guild.me.edit(nick="おもてなし")
+        await ctx.guild.me.edit(nick="fuga")
 
 
 def setup(bot):

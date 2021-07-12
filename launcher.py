@@ -56,6 +56,7 @@ async def on_ready():
 
 
 bot.load_extension("cogs.change_bot_nickname")
+bot.load_extension("cogs.call")
 
 
 @bot.command()
@@ -73,17 +74,5 @@ async def navi(ctx):
     result_str = get_result_str(users)
     await channel.send(result_str)
 
-
-@bot.command()
-async def call(ctx):
-    embed = discord.Embed()
-    color = discord.Color
-    green = color.green()
-    embed.color = green
-    NOTIFICATION = "**新入生コアタイムだよ！ 全員集合！**"
-    embed.description = NOTIFICATION
-
-    msg = await ctx.send(embed=embed)
-    await msg.add_reaction('\N{THUMBS UP SIGN}')
 
 bot.run(config.TOKEN)
