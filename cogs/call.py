@@ -3,9 +3,6 @@ from discord.ext import commands
 from discord.ext import tasks
 from datetime import datetime
 import config
-import locale
-
-locale.setlocale(locale.LC_ALL, '')
 
 
 class Call(commands.Cog):
@@ -25,7 +22,8 @@ class Call(commands.Cog):
     def make_text(self, now):
         month = now.month
         day = now.day
-        weekday = now.strftime('%a')
+        WEEKDAYS = ['月', '火', '水', '木', '金', '土', '日']
+        weekday = WEEKDAYS[now.weekday()]
         return f"{month}/{day}({weekday})開催分です。"\
             "スタンプはお早めに！\n\n"\
             "**新入生コアタイムだよ！ 全員集合！**"
