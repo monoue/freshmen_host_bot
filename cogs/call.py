@@ -5,7 +5,7 @@ from datetime import datetime
 import config
 import locale
 
-locale.setlocale(locale.LC_TIME, 'Japanese_Japan.UTF-8')
+locale.setlocale(locale.LC_ALL, '')
 
 
 class Call(commands.Cog):
