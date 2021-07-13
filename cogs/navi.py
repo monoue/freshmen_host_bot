@@ -54,8 +54,9 @@ class Navi(commands.Cog):
     async def navi(self, ctx):
         if not executed_by_privileged_member(ctx):
             return
-        channel = self.bot.get_channel(config.NOTIFICATION_CHANNEL_ID)
-        msg = await channel.fetch_message(config.MESSAGE_ID)
+        # channel = self.bot.get_channel(config.NOTIFICATION_CHANNEL_ID)
+        # msg = await channel.fetch_message(config.MESSAGE_ID)
+        msg = await ctx.fetch_message(config.MESSAGE_ID)
         reactions = msg.reactions
         users = []
         for reaction in reactions:
