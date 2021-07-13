@@ -54,12 +54,16 @@ class Navi(commands.Cog):
     async def navi(self, ctx):
         if not executed_by_privileged_member(ctx):
             return
-        channel = self.bot.get_channel(config.CHANNEL_ID)
+        channel = self.bot.get_channel(config.NOTIFICATION_CHANNEL_ID)
         msg = await channel.fetch_message(config.MESSAGE_ID)
         reactions = msg.reactions
         users = []
         for reaction in reactions:
-            if emoji.demojize(reaction.emoji) == ':thumbs_up:':
+            # for test ###
+            # if emoji.demojize(reaction.emoji) == ':thumbs_up:':
+            # 後で外す
+            print(emoji.demojize(reaction.emoji))
+            if emoji.demojize(reaction.emoji) == ':_vim:':
                 reaction_users = await reaction.users().flatten()
                 for user in reaction_users:
                     users.append(user.mention)
