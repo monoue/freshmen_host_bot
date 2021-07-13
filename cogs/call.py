@@ -3,6 +3,7 @@ from discord.ext import commands
 from discord.ext import tasks
 from datetime import datetime
 import config
+from utils.check_privilege import executed_by_privileged_member
 
 
 class Call(commands.Cog):
@@ -11,7 +12,7 @@ class Call(commands.Cog):
         self.embed = self.init_embed()
         self.caller.start()
 
-    def init_embed(self):
+    def init_embed(self) -> discord.Embed():
         embed = discord.Embed()
         embed.color = discord.Color.green()
         return embed
@@ -19,7 +20,7 @@ class Call(commands.Cog):
     def cog_unload(self):
         self.caller.cancel()
 
-    def make_text(self, now):
+    def make_text(self, now) -> str:
         month = now.month
         day = now.day
         WEEKDAYS = ['月', '火', '水', '木', '金', '土', '日']
@@ -30,7 +31,7 @@ class Call(commands.Cog):
             "スタンプはお早めに！\n\n"\
             "**新入生コアタイムだよ！ 全員集合！**"
 
-    def is_scheduled_time(self, now):
+    def is_scheduled_time(self, now) -> bool:
         hour = 5
         minute = 42
         return now.hour == hour and now.minute == minute
@@ -54,6 +55,8 @@ class Call(commands.Cog):
 
     @commands.command()
     async def call_manually(self, ctx):
+        if not executed_by_privileged_member(ctx):
+            return
         now = datetime.now()
         await self.bot.wait_until_ready()
         self.embed.description = self.make_text(now)
