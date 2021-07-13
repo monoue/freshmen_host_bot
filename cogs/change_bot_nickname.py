@@ -1,4 +1,5 @@
 from discord.ext import commands
+from utils.check_privilege import executed_by_privileged_member
 
 
 class ChNick(commands.Cog):
@@ -7,6 +8,8 @@ class ChNick(commands.Cog):
 
     @commands.command()
     async def chnick(self, ctx):
+        if not executed_by_privileged_member(ctx):
+            return
         await ctx.guild.me.edit(nick="おもてなし")
 
 
