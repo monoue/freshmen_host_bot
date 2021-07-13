@@ -2,11 +2,11 @@ import random
 from discord.ext import commands
 import discord
 import config
-# import my_config
 import emoji
 
-
-bot = commands.Bot(command_prefix="!")
+intents = discord.Intents().all()
+intents.members = True
+bot = commands.Bot(command_prefix="!", intents=intents, help_command=None)
 OK_SIGN = ':thumbsup:'
 
 
@@ -58,6 +58,7 @@ async def on_ready():
 
 bot.load_extension("cogs.change_bot_nickname")
 bot.load_extension("cogs.call")
+bot.load_extension("cogs.role")
 
 
 @bot.command()
