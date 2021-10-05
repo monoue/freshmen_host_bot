@@ -48,7 +48,7 @@ class Role(commands.Cog):
             return
         if not self.is_student(member.roles):
             return
-        if member.joined_at > datetime.now() - relativedelta(weeks=1):
+        if member.joined_at > datetime.now() - relativedelta(weeks=2):
             await member.add_roles(role)
 
     async def add_role_entirely(self, ctx, role_name):
