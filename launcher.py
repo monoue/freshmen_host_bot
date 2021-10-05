@@ -10,11 +10,7 @@ def create_intents() -> discord.Intents:
 
 class FreshmenHostBot(commands.Bot):
     async def on_ready(self):
-        self.load_extension("cogs.change_bot_nickname")
-        self.load_extension("cogs.call")
         self.load_extension("cogs.role")
-        self.load_extension("cogs.help")
-        self.load_extension("cogs.navi")
         print("on_ready")
 
 
